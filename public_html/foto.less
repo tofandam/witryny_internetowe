@@ -1,0 +1,44 @@
+
+.szablon_foto(@kolorramki; @kolorcienia; @padding )
+{
+    border:1px solid @kolorramki;
+    box-shadow: 1px 1px 15px @kolorcienia;
+    padding: @padding;
+    
+    &.mini {
+        width: auto;
+        height: 150px;
+        
+        &:hover {
+        border:1px solid darken(spin(@kolorramki,180),30%);
+        box-shadow: 1px 1px 15px darken(spin(@kolorcienia,180),30%);
+        }
+    }
+
+    &.zaok {
+        border-radius: 5px;
+    }
+    
+    &:hover {
+    border:1px solid spin(@kolorramki,180);
+    box-shadow: 1px 1px 15px spin(@kolorcienia,180);
+        
+    }
+}
+
+
+.foto{
+
+    img{
+    &.czerwony{
+        .szablon_foto(#ff0000; lighten(#ff0000, 10%); 5px)
+        }
+    
+    &.zielony{
+        .szablon_foto(#00ff00; lighten(#00ff00, 10%); 5px)
+        }
+    &.niebieski{
+        .szablon_foto(#0000ff; lighten(#0000ff, 10%); 5px)
+        }
+    }
+}

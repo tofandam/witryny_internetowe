@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Czat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.angularjs.org/1.6.9/angular-sanitize.js"></script>
+    <link href="css/czatGrupud.css" rel="stylesheet" type="text/css"/>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl" class="czat_czerwony">
+
+<div id="okno">
+    <div class="messages" ng-repeat="item in czatdata | orderBy:'id':true | filter: szukaj ">
+        <div data-ala="ma" class="czat-name">Name: <span>{{item.name}}</span></div>
+        <div class="czat-data">Data: <span>{{item.created_at}}</span></div>
+        <div class="czat-content" ng-bind-html="item.content"></div>
+    </div>
+    <div></div>
+</div>
+
+<div class="inp">
+    <input class="form-control" ng-model="$storage.name">
+    <input ng-model="content"  placeholder=wiadomosc>
+    <input ng-model="szukaj.name" placeholder="szukaj">
+    <button ng-click="wyslij()">Wyślij</button>
+</div>
+
+<script>
+    var app = angular.module('myApp', ['ngSanitize']);
+    app.controller('myCtrl', function($scope, $http, $interval) {
+
+        $scope.pytanieDoSerwera = false;
+        $scope.$storage = window.localStorage;
+        $scope.czatdata = [];
+        $scope.$storage.lastid = 0;
+
+        dist = (value, index, self) => {
+            return self.indexOf(value) === index;
+        }
+
+        $scope.wyslij = () => {
+
+            var img = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+            var url = /(http)(s)?(:\/\/)(.*)/;
+
+            if(img.test($scope.content))
+            {
+                var t = $scope.content.match(/((http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)\b)/gim);
+                console.log(t);
+                angular.forEach(t.filter(dist), (item, key)=> {
+                    $scope.content = $scope.content.replace(new RegExp(item,'g'), '<img src="'+item+'" alt="" class="img img-responsive" />');
+                });
+
+                // $scope.content = '<img src="'+$scope.content+'" class="img img-responsive" alt="" />';
+            } else if(url.test($scope.content))
+            {
+                $scope.content = '<a href="'+$scope.content+'">'+$scope.content+'</a>';
+            }
+
+            $http.get('http://wsi.ovh/czat?lastid='+$scope.$storage.lastid+'&name='+$scope.$storage.name+'&content='+$scope.content).then( (e)=> {
+
+                $scope.content = '';
+                // console.log(e.data);
+
+                // $scope.czatdata=e.data;
+
+            }, (e)=> {} );
+        }
+
+        $scope.czytajrekord = ()=>{
+
+            if(!$scope.pytanieDoSerwera)
+            {
+                $scope.pytanieDoSerwera=true;
+                $http.get('http://wsi.ovh/czat?lastid='+$scope.$storage.lastid).then( (e)=> {
+                    angular.forEach( e.data, (item, key) => {
+                        $scope.czatdata.push(item);
+                        if(item.id >= $scope.$storage.lastid)
+                            $scope.$storage.lastid = item.id + 1;
+                    });
+
+                    if(e.data.length>0 && 0)
+                    {
+                        setTimeout( () =>{
+                            var okno = document.getElementById("okno");
+                            okno.scrollTop = okno.scrollHeight;
+                        }, 200 );
+                    }
+
+                    $scope.pytanieDoSerwera = false;
+
+
+                }, (e)=> {
+                    $scope.pytanieDoSerwera = false;
+                } );
+            }
+        }
+
+        $interval(  $scope.czytajrekord, 1000);
+        $scope.czytajrekord();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+@offsetx: 167px;
+@offsety: 182px;
+@swx:167px;
+@swy:167px;
+
+.iko(@elem)
+{
+    each(range(1,8),{
+        &.ikona-@{value}@{elem}
+        {
+         background-position: (@offsety + ((@value - 1)*@swy)) (@offsetx + ((@elem - 1)*@swx));   
+        }
+    });
+}
+
+
+.ikon {
+    
+    background: transparent url("../img/ico.png") repeat 0 0;
+    width:@swx;
+    height:@swy;
+    display: inline-block;
+    
+    each(range(1,8),{
+        .iko(@value);
+    });
+    
+}

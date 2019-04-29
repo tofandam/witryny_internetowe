@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <style>
+            #szachy {
+                position: relative;
+                border: 1px gray solid;
+                padding: 3px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+                width:800px;
+            }
+            
+            /*  
+            https://www.w3schools.com/cssref/css_selectors.asp
+            
+            */
+            
+            
+            #szachy .wiersz
+            {
+                height: 100px;
+            }
+            
+            #szachy .wiersz > div
+            {
+                float: left;
+                width: 100px;
+                height: 100px;
+            }
+            #szachy .wiersz:nth-child(odd) > div:nth-child(odd) {
+                background-color: green;
+            }
+            
+            #szachy .wiersz:nth-child(even) > div:nth-child(even) {
+                background-color: green;
+            }
+            
+            
+            #szachy .pionki span 
+            { 
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            display: inline-block;
+            width: 52px;
+            height: 82px;
+            background-image: url(./img/pionki.png);
+            background-repeat: no-repeat;
+            /* background-position: center center; */
+            background-size: 278px 167px;
+             transition: 5s all; 
+            }
+            
+            #szachy .pionki span.pionek {background-position-x: -227px;}
+            #szachy .pionki span.kon {background-position-x: -137px;}
+            #szachy .pionki span.goniec {background-position-x: -91px;}
+            #szachy .pionki span.wieza {background-position-x: -182px;}
+            #szachy .pionki span.krol {background-position-x: -2px;}
+            #szachy .pionki span.krolowa {background-position-x: -48px;}
+            #szachy .pionki span.czarny{background-position-y: -79px;}
+            
+            #szachy .pionki span.a {left:26px;}
+            #szachy .pionki span.b {left:126px;}
+            #szachy .pionki span.c {left:226px;}
+            #szachy .pionki span.d {left:326px;}
+            #szachy .pionki span.e {left:426px;}
+            #szachy .pionki span.f {left:526px;}
+            #szachy .pionki span.g {left:626px;}
+            #szachy .pionki span.h {left:726px;}
+            
+            #szachy .pionki span.n1 {top:6px;}
+            #szachy .pionki span.n2 {top:106px;}
+            #szachy .pionki span.n3 {top:206px;}
+            #szachy .pionki span.n4 {top:306px;}
+            #szachy .pionki span.n5 {top:406px;}
+            #szachy .pionki span.n6 {top:506px;}
+            #szachy .pionki span.n7 {top:606px;}
+            #szachy .pionki span.n8 {top:706px;}
+        </style>
+
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl">
+        
+        <h1>{{Nag}}</h1>
+        
+        
+        <div id="szachy">
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="wiersz">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+           
+            <div class="pionki">
+                <span class="kon czarny b n1"></span>
+                <span class="kon czarny g n1"></span>
+                <span class="wieza czarny a n1"></span>
+                <span class="wieza czarny h n1"></span>
+                <span class="goniec czarny c n1"></span>
+                <span class="goniec czarny f n1"></span>
+                <span class="krol czarny d n1"></span>
+                <span class="krolowa czarny e n1"></span>
+                <span class="pionek czarny a n2"></span>
+                <span class="pionek czarny b n2"></span>
+                <span class="pionek czarny c n2"></span>
+                <span class="pionek czarny d n2"></span>
+                <span class="pionek czarny e n2"></span>
+                <span class="pionek czarny f n2"></span>
+                <span class="pionek czarny g n2"></span>
+                <span class="pionek czarny h n2"></span>
+                <span class="pionek  a n7"></span>
+                <span class="pionek  b n7"></span>
+                <span class="pionek  c n7"></span>
+                <span class="pionek  d n7"></span>
+                <span class="pionek  e n7"></span>
+                <span class="pionek  f n7"></span>
+                <span class="pionek  g n7"></span>
+                <span class="pionek  h n7"></span>
+                <span class="kon  b n8"></span>
+                <span class="kon  g n8"></span>
+                <span class="wieza  a n8"></span>
+                <span class="wieza  h n8"></span>
+                <span class="goniec  c n8"></span>
+                <span class="goniec  f n8"></span>
+                <span class="krol  d n8"></span>
+                <span class="krolowa  e n8"></span>
+            </div>
+           
+        </div>
+        
+        <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            
+            $scope.Nag = "Szachy";
+    
+    
+        });
+        </script>        
+        
+    </body>
+</html>

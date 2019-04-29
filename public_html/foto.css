@@ -1,0 +1,60 @@
+.foto img.czerwony {
+  border: 1px solid #ff0000;
+  box-shadow: 1px 1px 15px #ff3333;
+  padding: 5px;
+}
+.foto img.czerwony.mini {
+  width: auto;
+  height: 150px;
+}
+.foto img.czerwony.mini:hover {
+  border: 1px solid #006666;
+  box-shadow: 1px 1px 15px #009999;
+}
+.foto img.czerwony.zaok {
+  border-radius: 5px;
+}
+.foto img.czerwony:hover {
+  border: 1px solid #00ffff;
+  box-shadow: 1px 1px 15px #33ffff;
+}
+.foto img.zielony {
+  border: 1px solid #00ff00;
+  box-shadow: 1px 1px 15px #33ff33;
+  padding: 5px;
+}
+.foto img.zielony.mini {
+  width: auto;
+  height: 150px;
+}
+.foto img.zielony.mini:hover {
+  border: 1px solid #660066;
+  box-shadow: 1px 1px 15px #990099;
+}
+.foto img.zielony.zaok {
+  border-radius: 5px;
+}
+.foto img.zielony:hover {
+  border: 1px solid #ff00ff;
+  box-shadow: 1px 1px 15px #ff33ff;
+}
+.foto img.niebieski {
+  border: 1px solid #0000ff;
+  box-shadow: 1px 1px 15px #3333ff;
+  padding: 5px;
+}
+.foto img.niebieski.mini {
+  width: auto;
+  height: 150px;
+}
+.foto img.niebieski.mini:hover {
+  border: 1px solid #666600;
+  box-shadow: 1px 1px 15px #999900;
+}
+.foto img.niebieski.zaok {
+  border-radius: 5px;
+}
+.foto img.niebieski:hover {
+  border: 1px solid #ffff00;
+  box-shadow: 1px 1px 15px #ffff33;
+}

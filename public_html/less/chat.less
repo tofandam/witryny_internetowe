@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.czat_wariant(@tlo1; @tlo2; @online; @bg; @headimg)
+{
+    background-color:@bg; 
+    
+    font-family: 'Roboto', sans-serif;
+    
+    
+    .header {
+        
+        
+        background-color: #fff;
+        
+        span {
+            display: inline-block;
+            width: 33%;
+            font-size: 0;
+            height:5vh;
+            background: #fff url(@headimg) no-repeat center center  / auto 60%; 
+        }
+    }
+    
+    
+    #okno {
+        
+        width:70%;
+        float: right;
+         height:95vh;
+         
+         
+        .belka {
+            background-color: @tlo2;
+            
+            h1 {
+                margin: 0;
+                text-align: center;
+                color: #fff;
+                font-size: 24px;
+                padding:12px;
+            }
+        }
+        .mess-list{
+         overflow-y: auto;
+         height:100%;
+        
+        .messages{
+            
+           .name{
+               
+            float:left;
+            width:10%;
+            position: relative;
+            min-height: 100px;
+            
+            
+            
+            .czat-name {
+                position:absolute;
+                right: 20px;
+                top: 20px;
+                font-size: 0;
+                display: inline-block;
+                width:30px;
+                height: 30px;
+                border-radius: 15px;
+                background: @tlo2 url("../img/czapka.png") no-repeat center bottom / 50% auto;
+                }
+           }
+           .content{ 
+            float:left;
+            width:90%;
+            position: relative;
+            min-height: 100px;
+            padding: 5px;
+               
+               
+            .czat-data {display: none;}
+            .czat-content { 
+               word-break:break-all;
+            padding:20px;
+            border-radius:30px; 
+                
+             
+                    
+            
+                 }
+           }
+           
+           &:nth-child(even) 
+           {
+            .content 
+                { 
+                    .czat-content {
+                             background-color: @tlo2;
+                             color: @tlo1;
+                         }
+                }
+           }
+           &:nth-child(odd) 
+           {
+               .content 
+                    {
+                        .czat-content {
+                                 background-color: @tlo1;
+                                 color: @tlo2;
+                             }
+                    }
+           }
+         }
+        }
+    }
+    
+}
+
+
+
+.czat {
+    
+    &.niebieski {
+        .czat_wariant(#ebebeb, #286eb5, #2ea051, #d6d2d3, "../img/aleChatlogo.png");
+    }
+    
+    &.zielony {
+        .czat_wariant(#ebebeb, #24e824, #2ea051, #d6d2d3,"../img/aleChatlogo_ziel.png");
+    }
+    
+    &.fiolet {
+        .czat_wariant(#ebebe5, #ff9c0a, #00009051, #d6d2d3,"../img/aleChatlogo_fiolet.png");
+    }
+    
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #szachy {
+            position: relative;
+            border: 1px gray solid;
+            padding: 3px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            width:800px;
+        }
+
+        /*
+        https://www.w3schools.com/cssref/css_selectors.asp
+
+        */
+
+        body {
+            background-color: cornsilk;
+        }
+            #szachy{
+                position: absolute;
+                margin-left: 350px;
+            align:center;
+        }
+
+        #szachy .wiersz
+        {
+            height: 100px;
+        }
+
+        #szachy .wiersz > div
+        {
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+        #szachy .wiersz:nth-child(odd) > div:nth-child(odd) {
+            background-color: dimgray;
+        }
+
+        #szachy .wiersz:nth-child(even) > div:nth-child(even) {
+            background-color: dimgray;
+        }
+
+
+        #szachy .pionki span
+        {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            display: inline-block;
+            width: 50px;
+            height: 82px;
+            background-image: url('./img/pionki.png');
+            background-repeat: no-repeat;
+            background-position: ;
+            background-size: 280px 170px;
+            transition: 5s all;
+        }
+        #szachy .pionki span.pionek{
+            background-position-x: -227px;
+        }
+        #szachy .pionki span.bialy{
+            background-position-y: -79px;
+        }
+        #szachy .pionki span.konik{
+            background-position-x: -137px;
+        }
+        #szachy .pionki span.laufr{
+            background-position-x: -92px;
+        }
+        #szachy .pionki span.wieza{
+            background-position-x: -185px;
+        }
+        #szachy .pionki span.krol{
+            background-position-x: -2px;
+        }
+        #szachy .pionki span.krolowa{
+            background-position-x: -48px;
+        }
+        #szachy .pionki span.a{left:24px;}
+        #szachy .pionki span.b{left:120px;}
+        #szachy .pionki span.c{left:220px;}
+        #szachy .pionki span.d{left:320px;}
+        #szachy .pionki span.e{left:420px;}
+        #szachy .pionki span.f{left:520px;}
+        #szachy .pionki span.g{left:620px;}
+        #szachy .pionki span.h{left:720px;}
+
+        #szachy .pionki span.n1{top:10px;}
+        #szachy .pionki span.n2{top:110px;}
+        #szachy .pionki span.n3{top:210px;}
+        #szachy .pionki span.n4{top:310px;}
+        #szachy .pionki span.n5{top:410px;}
+        #szachy .pionki span.n6{top:510px;}
+        #szachy .pionki span.n7{top:610px;}
+        #szachy .pionki span.n8{top:710px;}
+
+        #szachy .pionki span.cien{
+            box-shadow: 100px 100px 10px darkgray;
+        }
+
+    </style>
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<h1>{{Nag}}</h1>
+<div class="info"><p>Ruch ma gracz: {{gracz?"Biały":"Czarny"}}</p>
+                    <p>Komunikat: {{komunikat}}</p>
+</div>
+<div id="szachy">
+
+    <div class="wiersz" ng-repeat="(windex, wiersz) in wiersze">
+        <div ng-repeat="(kindex, kolumna) in kolumny" ng-click="klikpola(windex, kindex)"></div>
+
+
+    </div>
+
+    <div class="pionki">
+        <!--<span class="pionek czarny a n2"></span>-->
+        <span ng-repeat="pionek in gra.gracz1" ng-click="klik_pionka(pionek)" ng-class="klasa_pionek(pionek, 'czarny')"></span>
+        <span ng-repeat="pionek in gra.gracz2" ng-click="klik_pionka(pionek)" ng-class="klasa_pionek(pionek, 'bialy')"></span>
+
+
+
+        <!--<span class="pionek czarny b n2"></span>-->
+        <!--<span class="pionek czarny c n2"></span>-->
+        <!--<span class="pionek czarny d n2"></span>-->
+        <!--<span class="pionek czarny e n2"></span>-->
+        <!--<span class="pionek czarny f n2"></span>-->
+        <!--<span class="pionek czarny g n2"></span>-->
+        <!--<span class="pionek czarny h n2"></span>-->
+        <!--<span class="konik czarny b n1"></span>-->
+        <!--<span class="konik czarny g n1"></span>-->
+        <!--<span class="laufr czarny c n1"></span>-->
+        <!--<span class="laufr czarny f n1"></span>-->
+        <!--<span class="wieza czarny a n1"></span>-->
+        <!--<span class="wieza czarny h n1"></span>-->
+        <!--<span class="krol czarny e n1"></span>-->
+        <!--<span class="krolowa czarny d n1"></span>-->
+
+
+        <!--<span class="pionek bialy a n7"></span>-->
+        <!--<span class="pionek bialy b n7"></span>-->
+        <!--<span class="pionek bialy c n7"></span>-->
+        <!--<span class="pionek bialy d n7"></span>-->
+        <!--<span class="pionek bialy e n7"></span>-->
+        <!--<span class="pionek bialy f n7"></span>-->
+        <!--<span class="pionek bialy g n7"></span>-->
+        <!--<span class="pionek bialy h n7"></span>-->
+        <!--<span class="konik bialy b n8"></span>-->
+        <!--<span class="konik bialy g n8"></span>-->
+        <!--<span class="laufr bialy c n8"></span>-->
+        <!--<span class="laufr bialy f n8"></span>-->
+        <!--<span class="wieza bialy a n8"></span>-->
+        <!--<span class="wieza bialy h n8"></span>-->
+        <!--<span class="krol bialy e n8"></span>-->
+        <!--<span class="krolowa bialy d n8"></span>-->
+
+    </div>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+       $scope.Nag="szachy";
+       $scope.kolumny =["a","b","c","d","e","f","g","h"];
+       $scope.wiersze =["1","2","3","4","5","6","7","8"];
+       $scope.aktywnypionek = null;
+       $scope.gracz = true; //true to bedzie bialy, false czarny
+
+
+       $scope.klasa_pionek = function(pionek, kolor)
+       {
+           //kon czarny a n3
+
+           var zaznaczone =" ";
+
+           if(pionek == $scope.aktywnypionek)
+               zaznaczone = "cien";
+
+
+
+           return pionek.figurka + " " + kolor + " n" + $scope.wiersze[pionek.wiersz]+" "+ $scope.kolumny[pionek.kolumna] +" ";//+ zaznaczone;
+           return pionek.figurka + " " + pionek.kolor + " " + pionek.wiersz+" "+ pionek.kolumna;
+
+
+
+       }
+       $scope.ustawkomunikat = function(){
+           if($scope.aktywnypionek == null)
+               $scope.komunikat = "Wybierz pionka";
+           else
+           $scope.komunikat = "Kliknij w pole docelowe";
+       }
+       $scope.sprawdzpolaczysapuste = function(tablica, gracz)
+       {
+//[{wiersz: 0, kolumna:0},{wiersz:1, kolumna:0}]
+
+               var res=true;
+               angular.forEach(tablica, function (element, indeks){
+
+                   if(
+                       !((element.wiersz >=0 && element.wiersz < 8)&&(element.kolumna >=0 && element.kolumna < 8))
+                   )
+                       res = false;
+
+
+                   angular.forEach(gracz, function (pionek, ipionek) {
+                    if(pionek.kolumna == element.kolumna && pionek.wiersz == element.wiersz)
+                        res = true;
+
+                });
+
+       });
+       }
+
+
+       $scope.klikpola = function(wiersz, kolumna)
+       {
+           if($scope.aktywnypionek != null)
+       {
+           $scope.aktywnypionek.kolumna = kolumna;
+           $scope.aktywnypionek.wiersz =wiersz;
+           //po wykonaniu ruchu zmieniamy gracza
+           $scope.gracz = !$scope.gracz;
+           $scope.aktywnypionek = null;
+
+
+           console.log($scope.aktywnypionek)
+       }
+           $scope.ustawkomunikat();
+       }
+       $scope.klik_pionka = function (pionek) {
+           if(pionek.gracz == $scope.gracz)
+           {
+               $scope.aktywnypionek = pionek;
+           }
+           $scope.ustawkomunikat();
+        }
+
+
+
+
+
+
+
+        //????
+        $scope.aktywnykrol=null;
+        $scope.klasa_krol = function(krol, kolor)
+        {
+            var zaznaczone1=" "
+            if(krol == $scope.aktywnykrol)
+                zaznaczone1= "cien";
+            return krol.figurka + " " + kolor + " " + krol.wiersz+" "+ krol.kolumna +" "+ zaznaczone1;
+            return krol.figurka + " " + krol.kolor + " " + krol.wiersz+" "+ krol.kolumna;
+        }
+        $scope.klik_krola = function (krol){
+        $scope.aktywnykrol = krol;
+        }
+        //????
+
+
+
+       $scope.gra = {
+           gracz1: [
+               {figurka: "pionek", wiersz:0, gracz:false, kolumna: 0},
+               {figurka: "pionek", wiersz:1, gracz:false, kolumna: 1},
+               {figurka: "pionek", wiersz:0, gracz:false, kolumna: 2},
+               {figurka: "pionek", wiersz:1, gracz:false, kolumna: 3},
+               {figurka: "pionek", wiersz:0, gracz:false, kolumna: 4},
+               {figurka: "pionek", wiersz:1, gracz:false, kolumna: 5},
+               {figurka: "pionek", wiersz:0, gracz:false, kolumna: 6},
+               {figurka: "pionek", wiersz:1, gracz:false, kolumna: 7},
+               {figurka: "krol", wiersz:0, gracz:false, kolumna: 8}
+           ],
+           gracz2: [
+               {figurka: "pionek", wiersz:6, gracz:true, kolumna: 0},
+               {figurka: "pionek", wiersz:7, gracz:true, kolumna: 1},
+               {figurka: "pionek", wiersz:6, gracz:true, kolumna: 2},
+               {figurka: "pionek", wiersz:7, gracz:true, kolumna: 3},
+               {figurka: "pionek", wiersz:6, gracz:true, kolumna: 4},
+               {figurka: "pionek", wiersz:7, gracz:true, kolumna: 5},
+               {figurka: "pionek", wiersz:6, gracz:true, kolumna: 6},
+               {figurka: "pionek", wiersz:7, gracz:true, kolumna: 7},
+               {figurka: "krol", wiersz:6, gracz:true, kolumna: 8},
+
+           ]
+       };
+        $scope.ustawkomunikat();
+    });
+
+	//dokończyć figury, dodać klika któremu dodać tło, albo zmienić figure
+	
+</script>
+
+</body>
+</html>

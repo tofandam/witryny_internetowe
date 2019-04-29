@@ -1,0 +1,146 @@
+@keyframes wjazd {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.czat_czerwony #okno {
+  padding: 5px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.czat_czerwony #okno > div {
+  min-height: 100px;
+}
+.czat_czerwony #okno > div.messages {
+  margin: 10px;
+  padding: 25px;
+  background-color: #ffcccc;
+  color: #000;
+  border: 1px solid #660000;
+  box-shadow: 0px 0px 10px #ffffff;
+  clear: both;
+  animation-duration: 5s;
+  animation-name: wjazd;
+}
+.czat_czerwony #okno > div.messages > div[data-ala=ma] {
+  color: red;
+}
+.czat_czerwony #okno > div.messages > .czat-name,
+.czat_czerwony #okno > div.messages .czat-data {
+  float: left;
+  width: 50%;
+}
+.czat_czerwony #okno > div.messages > .czat-name span,
+.czat_czerwony #okno > div.messages .czat-data span {
+  font-weight: bold;
+}
+.czat_czerwony #okno > div.messages > .czat-data {
+  text-align: right;
+}
+.czat_czerwony #okno > div.messages .czat-content {
+  text-align: justify;
+  color: #1a1a1a;
+}
+.czat_czerwony .inp {
+  position: absolute;
+  bottom: 0px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  padding: 20px;
+}
+.czat_zielony #okno {
+  padding: 5px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.czat_zielony #okno > div {
+  min-height: 100px;
+}
+.czat_zielony #okno > div.messages {
+  margin: 10px;
+  padding: 25px;
+  background-color: #4dff4d;
+  color: #000;
+  border: 1px solid #000000;
+  box-shadow: 0px 0px 10px #80ff80;
+  clear: both;
+  animation-duration: 5s;
+  animation-name: wjazd;
+}
+.czat_zielony #okno > div.messages > div[data-ala=ma] {
+  color: red;
+}
+.czat_zielony #okno > div.messages > .czat-name,
+.czat_zielony #okno > div.messages .czat-data {
+  float: left;
+  width: 50%;
+}
+.czat_zielony #okno > div.messages > .czat-name span,
+.czat_zielony #okno > div.messages .czat-data span {
+  font-weight: bold;
+}
+.czat_zielony #okno > div.messages > .czat-data {
+  text-align: right;
+}
+.czat_zielony #okno > div.messages .czat-content {
+  text-align: justify;
+  color: #1a1a1a;
+}
+.czat_zielony .inp {
+  position: absolute;
+  bottom: 0px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  padding: 20px;
+}
+.czat_niebieski #okno {
+  padding: 5px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.czat_niebieski #okno > div {
+  min-height: 100px;
+}
+.czat_niebieski #okno > div.messages {
+  margin: 10px;
+  padding: 25px;
+  background-color: #ccccff;
+  color: #000;
+  border: 1px solid #000066;
+  box-shadow: 0px 0px 10px #ffffff;
+  clear: both;
+  animation-duration: 5s;
+  animation-name: wjazd;
+}
+.czat_niebieski #okno > div.messages > div[data-ala=ma] {
+  color: red;
+}
+.czat_niebieski #okno > div.messages > .czat-name,
+.czat_niebieski #okno > div.messages .czat-data {
+  float: left;
+  width: 50%;
+}
+.czat_niebieski #okno > div.messages > .czat-name span,
+.czat_niebieski #okno > div.messages .czat-data span {
+  font-weight: bold;
+}
+.czat_niebieski #okno > div.messages > .czat-data {
+  text-align: right;
+}
+.czat_niebieski #okno > div.messages .czat-content {
+  text-align: justify;
+  color: #1a1a1a;
+}
+.czat_niebieski .inp {
+  position: absolute;
+  bottom: 0px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  padding: 20px;
+}

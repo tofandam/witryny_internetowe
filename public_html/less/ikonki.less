@@ -1,0 +1,26 @@
+
+ .ikona(@y)
+ {
+   each(range(1px,1393px,174), {
+      &.x@{value}@{y} 
+        {
+           background-position: @value @y;
+        }
+    });
+     
+ }
+
+
+.ikonki {
+
+    display: inline-block;
+    width: 174px;
+    height: 174px;
+    background: rgba(0,0,0,0) url("../img/ico.png") no-repeat 0px 0px;
+    
+    each(range(1px,1219px,174), {
+        .ikona(@value);
+     });
+    
+    
+}

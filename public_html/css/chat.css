@@ -1,0 +1,303 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+.czat #menuboczne{
+  background: #e4e4e6;
+  height: 710px;
+  width: 282px;
+}
+.btn{
+
+  color: #1d13ff;
+  width:202px;
+  height: 30px;
+  border-radius: 5px;
+  align-self: center;
+  margin-top: 20px;
+}
+.przycisk1{
+  border-radius: 5px;
+  width: 400px;
+  text-align: center;
+  border: none;
+  padding-top: 10px;
+}
+przycisk2{
+  position: absolute;
+  padding-left: 1000px;
+  background: aqua;
+}
+.foot {
+  width:53.5% ;
+  margin-left: 282px;
+  background: #aac7df;
+  padding: 11px;
+  position: absolute;
+  top: 700px;
+
+}
+.szukaj{
+border-radius:5px;
+border:none;
+margin-left:;
+width:282px;}
+
+.wyslijbutton{
+background: url("../img/ikonawiadomosc.png")no-repeat center center / auto 60%;
+border-radius: 75px;
+border:none;
+width:50px;
+height:50px;
+position: absolute;
+top:36px;
+left: 580px;
+}
+.przycisk{
+position:absolute;
+top:-927px;
+left:225px;}
+.form-control{
+width:300px;
+text-align: center;}
+.przycisk{
+  margin-top: 1000px;
+}
+.prawy{
+color:white;
+font-size:20px;
+float:right;
+margin-top:-40px;
+margin-right:10px;
+}
+.czat.niebieski {
+  background-color: #d6d2d3;
+  font-family: 'Roboto', sans-serif;
+}
+.czat.niebieski .header {
+  background-color: #fff;
+}
+.czat.niebieski .header span {
+  display: inline-block;
+  width: 33%;
+  font-size: 0;
+  height: 5vh;
+  background: #fff url("../img/aleChatlogo.png") no-repeat center center / auto 60%;
+}
+.czat.niebieski #okno {
+  width: 70%;
+  float: right;
+  height: 95vh;
+}
+.czat.niebieski #okno .belka {
+  background-color: #286eb5;
+}
+.czat.niebieski #okno .belka h1 {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  padding: 12px;
+}
+.czat.niebieski #okno .mess-list {
+  overflow-y: auto;
+  height: 100%;
+}
+.czat.niebieski #okno .mess-list .messages .name {
+  float: left;
+  width: 10%;
+  position: relative;
+  min-height: 100px;
+}
+.czat.niebieski #okno .mess-list .messages .name .czat-name {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 0;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #286eb5 url("../img/czapka.png") no-repeat center bottom / 50% auto;
+}
+.czat.niebieski #okno .mess-list .messages .content {
+  float: left;
+  width: 90%;
+  position: relative;
+  min-height: 100px;
+  padding: 5px;
+}
+.czat.niebieski #okno .mess-list .messages .content .czat-data {
+  display: none;
+}
+.czat.niebieski #okno .mess-list .messages .content .czat-content {
+  word-break: break-all;
+  padding: 20px;
+  border-radius: 30px;
+}
+.czat.niebieski #okno .mess-list .messages:nth-child(even) .content .czat-content {
+  background-color: #286eb5;
+  color: #ebebeb;
+}
+.czat.niebieski #okno .mess-list .messages:nth-child(odd) .content .czat-content {
+  background-color: #ebebeb;
+  color: #286eb5;
+}
+.czat.zielony {
+  background-color: #d6d2d3;
+  font-family: 'Roboto', sans-serif;
+}
+.czat.zielony .header {
+  background-color: #fff;
+}
+.czat.zielony .header span {
+  display: inline-block;
+  width: 33%;
+  font-size: 0;
+  height: 5vh;
+  background: #fff url("../img/aleChatlogo_ziel.png") no-repeat center center / auto 60%;
+}
+.czat.zielony #okno {
+  width: 70%;
+  float: right;
+  height: 95vh;
+}
+.czat.zielony #okno .belka {
+  background-color: #24e824;
+}
+.czat.zielony #okno .belka h1 {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  padding: 12px;
+}
+.czat.zielony #okno .mess-list {
+  overflow-y: auto;
+  height: 100%;
+}
+.czat.zielony #okno .mess-list .messages .name {
+  float: left;
+  width: 10%;
+  position: relative;
+  min-height: 100px;
+}
+.czat.zielony #okno .mess-list .messages .name .czat-name {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 0;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #24e824 url("../img/czapka.png") no-repeat center bottom / 50% auto;
+}
+.czat.zielony #okno .mess-list .messages .content {
+  float: left;
+  width: 90%;
+  position: relative;
+  min-height: 100px;
+  padding: 5px;
+}
+.czat.zielony #okno .mess-list .messages .content .czat-data {
+  display: none;
+}
+.czat.zielony #okno .mess-list .messages .content .czat-content {
+  word-break: break-all;
+  padding: 20px;
+  border-radius: 30px;
+}
+.czat.zielony #okno .mess-list .messages:nth-child(even) .content .czat-content {
+  background-color: #24e824;
+  color: #ebebeb;
+}
+.czat.zielony #okno .mess-list .messages:nth-child(odd) .content .czat-content {
+  background-color: #ebebeb;
+  color: #24e824;
+}
+.czat.fiolet {
+  background-color: #d4d2d3;
+  font-family: 'Roboto', sans-serif;
+}
+.czat.fiolet .header {
+  background-color: #fff;
+}
+.czat.fiolet .header span {
+  display: inline-block;
+  width: 33%;
+  font-size: 0;
+  height: 5vh;
+  background: #fff url("../img/aleChatlogo_fiolet.png") no-repeat center center / auto 60%;
+}
+.czat.fiolet #okno {
+  width: 70%;
+  float: right;
+  height: 75vh;
+}
+.czat.fiolet #okno .belka {
+  background-color: #aac7df;
+  margin-left:0px;
+}
+.czat.fiolet #okno .belka h1 {
+  margin-top:-50px;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  padding: 12px;
+}
+.czat.fiolet #okno .mess-list {
+  overflow-y: auto;
+  height: 100%;
+}
+.czat.fiolet #okno .mess-list .messages .name {
+  float: left;
+  width: 10%;
+  position: relative;
+  min-height: 100px;
+}
+.czat.fiolet #okno .mess-list .messages .name .czat-name {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 0;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: #6090d6 url("../img/czapka.png") no-repeat center bottom / 50% auto;
+}
+.czat.fiolet #okno .mess-list .messages .content {
+  float: left;
+  width: 90%;
+  position: relative;
+  min-height: 100px;
+  padding: 5px;
+}
+.czat.fiolet #okno .mess-list .messages .content .czat-data {
+  display: none;
+}
+.czat.fiolet #okno .mess-list .messages .content .czat-content {
+  word-break: break-all;
+  padding: 20px;
+  border-radius: 30px;
+}
+.czat.fiolet #okno .mess-list .messages:nth-child(even) .content .czat-content {
+  background-color: #6090d6;
+  color: #ebebe5;
+}
+.czat.fiolet #okno .mess-list .messages:nth-child(odd) .content .czat-content {
+  background-color: #ebebe5;
+  color: #024b87;
+}
+.czcionka{
+align: left;
+margin-left:30px;
+margin-top:5px;
+}
+.edit{
+border-style:;
+
+}

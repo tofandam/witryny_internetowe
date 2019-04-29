@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <style>
+            #szachy {
+                position: relative;
+                border: 1px gray solid;
+                padding: 3px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+                width:800px;
+            }
+            
+            /*  
+            https://www.w3schools.com/cssref/css_selectors.asp
+            
+            */
+            
+            
+            #szachy .wiersz
+            {
+                height: 100px;
+            }
+            
+            #szachy .wiersz > div
+            {
+                float: left;
+                width: 100px;
+                height: 100px;
+            }
+            #szachy .wiersz:nth-child(odd) > div:nth-child(odd) {
+                background-color: darkviolet;
+            }
+            
+            #szachy .wiersz:nth-child(even) > div:nth-child(even) {
+                background-color: darkmagenta;
+            }
+            
+            
+            #szachy .pionki span 
+            { 
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            display: inline-block;
+            width: 52px;
+            height: 82px;
+            background-image: url(./img/pionki.png);
+            background-repeat: no-repeat;
+            /* background-position: center center; */
+            background-size: 278px 167px;
+             transition: 5s all; 
+            }
+            
+            #szachy .pionki span.pionek {background-position-x: -227px;}
+            #szachy .pionki span.kon {background-position-x: -137px;}
+            #szachy .pionki span.goniec {background-position-x: -91px;}
+            #szachy .pionki span.wieza {background-position-x: -182px;}
+            #szachy .pionki span.krol {background-position-x: -2px;}
+            #szachy .pionki span.krolowa {background-position-x: -48px;}
+            #szachy .pionki span.czarny{background-position-y: -79px;}
+            #szachy .pionki span.cien {
+                box-shadow: 0px 0px 1px antiquewhite;
+            }
+            
+            
+            #szachy .pionki span.a {left:26px;}
+            #szachy .pionki span.b {left:126px;}
+            #szachy .pionki span.c {left:226px;}
+            #szachy .pionki span.d {left:326px;}
+            #szachy .pionki span.e {left:426px;}
+            #szachy .pionki span.f {left:526px;}
+            #szachy .pionki span.g {left:626px;}
+            #szachy .pionki span.h {left:726px;}
+            
+            #szachy .pionki span.n1 {top:6px;}
+            #szachy .pionki span.n2 {top:106px;}
+            #szachy .pionki span.n3 {top:206px;}
+            #szachy .pionki span.n4 {top:306px;}
+            #szachy .pionki span.n5 {top:406px;}
+            #szachy .pionki span.n6 {top:506px;}
+            #szachy .pionki span.n7 {top:606px;}
+            #szachy .pionki span.n8 {top:706px;}
+        </style>
+
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl">
+        
+        <h1>{{Nag}}</h1>
+        
+        <div class="info">
+            <p>Ruch ma gracz: {{ gracz?"Biały":"Czarny" }}</p>
+            <p>Komunikat: {{ komunikat }}</p>
+        </div>
+        <div id="szachy">
+            
+            <div class="wiersz"  ng-repeat="(windex, wiersz) in wiersze">
+                <div ng-repeat="(kindex, kolumna) in kolumny" ng-click="klikpola(windex, kindex)"></div>
+            </div>
+           
+            <div class="pionki">
+                <span ng-repeat="pionek in gra.gracz1" ng-click="klik_pionka(pionek)" ng-class="klasa_pionek(pionek, 'czarny')"></span>
+                <span ng-repeat="pionek in gra.gracz2" ng-click="klik_pionka(pionek)" ng-class="klasa_pionek(pionek, '')"></span>
+
+                
+                <!--                <span class="kon czarny b n1"></span>
+                <span class="kon czarny g n1"></span>
+                <span class="wieza czarny a n1"></span>
+                <span class="wieza czarny h n1"></span>
+                <span class="goniec czarny c n1"></span>
+                <span class="goniec czarny f n1"></span>
+                <span class="krol czarny d n1"></span>
+                <span class="krolowa czarny e n1"></span>
+                <span class="pionek czarny a n2"></span>
+                <span class="pionek czarny b n2"></span>
+                <span class="pionek czarny c n2"></span>
+                <span class="pionek czarny d n2"></span>
+                <span class="pionek czarny e n2"></span>
+                <span class="pionek czarny f n2"></span>
+                <span class="pionek czarny g n2"></span>
+                <span class="pionek czarny h n2"></span>
+                <span class="pionek  a n7"></span>
+                <span class="pionek  b n7"></span>
+                <span class="pionek  c n7"></span>
+                <span class="pionek  d n7"></span>
+                <span class="pionek  e n7"></span>
+                <span class="pionek  f n7"></span>
+                <span class="pionek  g n7"></span>
+                <span class="pionek  h n7"></span>
+                <span class="kon  b n8"></span>
+                <span class="kon  g n8"></span>
+                <span class="wieza  a n8"></span>
+                <span class="wieza  h n8"></span>
+                <span class="goniec  c n8"></span>
+                <span class="goniec  f n8"></span>
+                <span class="krol  d n8"></span>
+                <span class="krolowa  e n8"></span>-->
+            </div>
+           
+        </div>
+        
+        <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            
+            $scope.Nag = "Szachy";
+            
+            $scope.kolumny = ["a","b","c","d","e","f","g","h"];
+            $scope.wiersze = ["1","2","3","4","5","6","7","8"];
+            $scope.aktywnypionek = null;
+            $scope.gracz = true; // true=>bialy false=>czarny
+            $scope.tablicapol = [];
+            
+            $scope.klasa_pionek = function(pionek, kolor)
+            {
+                var zaznaczone = "";
+                
+                if(pionek ==  $scope.aktywnypionek)
+                    zaznaczone = "cien";
+                // kon czarny a n3
+                return pionek.figurka + " " + kolor + " n" + $scope.wiersze[pionek.wiersz] + " " + $scope.kolumny[pionek.kolumna] + " " + zaznaczone;  
+            }
+
+            $scope.sprawdzPolaDoRuchu = function(pionek) {
+                //sprawdzamy wiersz
+                var res = [];
+                var wiersz = pionek.gracz ? pionek.wiersz + 1 : pionek.wiersz - 1;
+                var kolumna1 = pionek.kolumna - 1;
+                var kolumna2 = pionek.kolumna + 1;
+                var gracz = !pionek.gracz ? $scope.gra.gracz1 : scope.gra.gracz2;
+                var kolumna1status = false; //zakladamy ze pole jest zajete
+                if (kolumna1 >= 0) {
+                    console.log($scope.szukajPionka(wiersz, kolumna1) ==null);
+                    res.push({wiersz:wiersz, kolumna:kolumna1})
+                }
+
+
+                if (kolumna2 < 8) {
+                    console.log($scope.szukajPionka(wiersz, kolumna2) == null);
+                    res.push({wiersz:wiersz, kolumna:kolumna2})
+                }
+return res;
+
+            }
+            $scope.ustaw_komunikat= function(){
+                if($scope.aktywnypionek == null)
+                    $scope.komunikat = "Wybierz pionka";
+                else
+                    $scope.komunikat = "kliknij w pole docelowe";
+
+                $scope.szukajPionka = (wiersz. kolumna)
+                {
+                    var res=null;
+
+                    angular.forEach($scope.gra.gracz1. function(pionek, indexPionka))
+
+             if(pionek.wiersz == wiersz && pionek.kolumna == kolumna){
+            res = pionek;
+                }};
+                if(res!=null) return res;
+                angular.forEach($scope.gra.gracz2. function(pionek, indexPionka))
+
+                    if(pionek.wiersz == wiersz && pionek.kolumna == kolumna){
+                        res = pionek;
+                }};
+
+
+
+
+
+
+            $scope.sprawdzPolaCzySaPuste = function(tablica, gracz)
+            {
+                /*
+                 * [0:{wiersz:0, kolumna:0},1:{wiersz:1, kolumna:0}]
+                 */
+                
+                var res = true;
+                angular.forEach(tablica, function(element, indeks){
+                    
+                    if(!((element.wiersz >=0 && element.wiersz <8) &&
+                            (element.kolumna >=0 && element.kolumna <8)))
+                                    res = false;
+                    
+                    angular.forEach(gracz, function(pionek,ipionek){
+                        if(pionek.kolumna  == element.kolumna &&
+                           pionek.wiersz  == element.wiersz)
+                           res = false;
+                    });
+                });
+                
+                return res;
+            }
+            
+            
+            $scope.klikpola = function(wiersz, kolumna)
+                {
+                    if($scope.aktywnypionek != null)
+                    {
+                        
+                        $scope.aktywnypionek.kolumna = kolumna;
+                        $scope.aktywnypionek.wiersz = wiersz;
+                        
+                        /*
+                         * po wyk. ruchu zmieniamy gracza
+                         */
+                        $scope.gracz = !$scope.gracz;
+                        
+                        $scope.aktywnypionek = null;
+                      }
+                    
+                    $scope.ustaw_komunikat();
+                }
+                
+            $scope.klik_pionka = function(pionek)
+            {
+                if(pionek.gracz == $scope.gracz)
+                {
+
+                    $scope.tablicapol = [];
+                    $scope.aktywnypionek = pionek;
+                    $scope.tablicapol = $scope.sprawdzpoladoruchu(pionek);
+                }
+                
+                $scope.ustaw_komunikat();
+            }
+            
+    
+            $scope.gra = {
+                gracz1: [
+                    {figurka:"pionek", wiersz:0, gracz:false, kolumna: 0},
+                    {figurka:"pionek", wiersz:1, gracz:false, kolumna: 1},
+                    {figurka:"pionek", wiersz:0, gracz:false, kolumna: 2},
+                    {figurka:"pionek", wiersz:1, gracz:false, kolumna: 3},
+                    {figurka:"pionek", wiersz:0, gracz:false, kolumna: 4},
+                    {figurka:"pionek", wiersz:1, gracz:false, kolumna: 5},
+                    {figurka:"pionek", wiersz:0, gracz:false, kolumna: 6},
+                    {figurka:"pionek", wiersz:1, gracz:false, kolumna: 7}
+                ],
+                gracz2: [
+                    {figurka:"pionek", wiersz:6, gracz:true, kolumna: 0},
+                    {figurka:"pionek", wiersz:7, gracz:true, kolumna: 1},
+                    {figurka:"pionek", wiersz:6, gracz:true, kolumna: 2},
+                    {figurka:"pionek", wiersz:7, gracz:true, kolumna: 3},
+                    {figurka:"pionek", wiersz:6, gracz:true, kolumna: 4},
+                    {figurka:"pionek", wiersz:7, gracz:true, kolumna: 5},
+                    {figurka:"pionek", wiersz:6, gracz:true, kolumna: 6},
+                    {figurka:"pionek", wiersz:7, gracz:true, kolumna: 7}
+                ]
+            };
+    
+            $scope.ustaw_komunikat();
+        });
+        </script>        
+        
+    </body>
+</html>

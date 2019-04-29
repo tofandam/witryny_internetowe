@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+    <style>
+        #szachy{
+        border:1px gray solid;
+        padding: 3px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,5);
+        width: 900px;
+        }
+        #szachy .wiersz1{
+        height:100px;
+        }
+        #szachy .wiersz1 > div
+		{
+        float: left;
+        width: 100px;
+        height: 100px;
+        }
+        #szachy .wiersz1:nth-child(odd) > div:nth-child(odd){
+        background-color: green;
+        }
+         #szachy .wiersz1:nth-child(even) > div:nth-child(even){
+        background-color: red;
+        }
+        .napis{
+        font-size:30px;
+        letter-spacing:36px;
+        margin: 25px;
+        text-align:center;
+        }
+        .napis2{
+        width:10px;
+        font-size:30px;
+        }
+        #szachy div > span{
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border-radius: 45px;
+        border: 1px solid grey;
+        box-shadow: 1px 1px 5px blue;
+        background-color: yellow;
+        margin: right;
+
+        /* jak to działatransition:5s all;
+        */
+        }
+        #szachy .bialy{
+        box-shadow:1px 1px 5px grey;
+        background-color:beige;
+        background-image:url("pionek.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 90%;
+
+        }
+         #szachy .czarny{
+        box-shadow:1px 1px 5px grey;
+        background-color:red;
+        }
+
+        #szachy .kr{
+        background-image:url("korona.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 90%;
+        }
+
+    </style>
+</head>
+<body>
+<div id="szachy">
+    <div class="napis2">1 2 3 4 5 6 7 8</div>
+    <div class="napis">   A B C D E F G H J</div>
+    <div class="wiersz1">
+        <div><span class="p1 bialy"></span></div>
+        <div><span></span></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><span class="p3 bialy kr"></span></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><span class="p1 czarny"></span> </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+                            <style>
+                                    body{
+                                         background-color: cornsilk;
+                                         }
+
+                                    #szachy{
+                                        border:1px gray solid;
+                                        width: 800px;
+                                        margin-left: auto;
+                                        margin-right: auto;
+
+
+                                    }
+                                     .numer{
+                                     font-size:30px;
+                                         margin-left: auto;
+                                         margin-right: auto;
+                                         width:800px;
+                                         letter-spacing: 36px;
+                                         text-align: center ;
+                                         padding-left: 30px;
+                                    }
+                                     .cyfra{
+                                     font-size:30px;
+                                     height: 35px;
+                                         width: 10px;
+                                         text-align: right;
+                                         margin-left:330px;
+                                         margin-top:auto;
+                                         padding-top: -100px;
+                                     }
+                                    #szachy .wiersz1{
+                                        height:100px;
+                                    }
+
+                                    #szachy .wiersz1 > div
+                                    {
+                                        float: left;
+                                        width: 100px;
+                                        height: 100px;
+                                    }
+                                    #szachy .wiersz1:nth-child(odd) > div:nth-child(odd){
+                                        background-color: dimgray;
+                                    }
+                                    #szachy .wiersz1:nth-child(even) > div:nth-child(even) {
+                                        background-color: dimgrey;
+                                    }
+                                    #szachy .bialy{
+                                        background-color: red;
+                                    }
+                                    #szachy div > span {
+                                          display: inline-block;
+                                          width: 80px;
+                                          height: 80px;
+                                          border-radius: 45px;
+                                          border: 1px solid grey;
+                                          box-shadow: 1px 1px 5px blue;
+                                          background-color: yellow;
+                                          margin: right;
+                                      }
+                                    #szachy span{
+                                        display: inline-block;
+                                        width: 70px;
+                                        height: 70px;
+                                        border-radius: 35px;
+                                        border: 1px solid green;
+                                        box-shadow: 1px 1px 5px grey;
+                                        margin-top:10px ;
+                                        margin-left: 10px;
+                                        background-image: url("./img/korona.png");
+                                        background-repeat: no-repeat;
+                                        background-position: center center;
+                                        background-size: 0%;
+                                        transition: 5s all;
+                                    }
+
+                                    #szachy .bialy{
+                                        box-shadow:1px 1px 5px grey;
+                                        background-color:beige;
+                                        background-image:url("img/pionek.png");
+                                        background-repeat: no-repeat;
+                                        background-position: center center;
+                                        background-size: 90%;
+                                        transition: 7000s ease-in-out 10s;
+
+                                    }
+                                    #szachy .czarny{
+                                            box-shadow:1px 1px 5px grey;
+                                            background-color:darkslategrey;
+                                            background-image:url("img/czarpion.png");
+                                            background-repeat: no-repeat;
+                                            background-position: center center;
+                                            background-size: 90%;
+
+                                        }
+                                    #szachy .kr{
+                                        box-shadow:1px 1px 5px grey;
+                                        background-color:beige;
+                                        background-image:url("img/korona.png");
+                                        background-repeat: no-repeat;
+                                        background-position: center center;
+                                        background-size: 90%;
+                                    }
+                                    #szachy .krcz{
+                                        box-shadow:1px 1px 5px grey;
+                                        background-color:darkslategrey;
+                                        background-image:url("img/korona.png");
+                                        background-repeat: no-repeat;
+                                        background-position: center center;
+                                        background-size: 90%;
+                                    }
+                                    #szachy .kuncz{
+                                        box-shadow:1px 1px 5px grey;
+                                        background-color:darkslategrey;
+                                        background-image:url("img/bishop.png");
+                                        background-repeat: no-repeat;
+                                        background-position: center center;
+                                        background-size: 60%;
+                                    }
+                                #szachy .pio1:hover{
+                                    background-color: yellow;
+                                    position: absolute;
+                                    margin-top: 210px;
+                                    margin-left: 410px;
+                                    transition: 1s ease-in-out 0s;
+                                }
+
+
+                            </style>
+    <title>Szachownica</title>
+</head>
+<body>
+
+<div class="numer">A B C D E F G H</div>
+<div class="cyfra"><br><br>1 <br><br><br>2<br><br><br> 3<br><br><br> 4<br><br><br> 5<br><br><br> 6<br><br><br> 7<br><br><br> 8</div>
+<div id="szachy">
+
+    <div class="wiersz1">
+        <div><span class="pio bialy"></span></div>
+        <div><span class="pio1 bialy"></span> </div>
+        <div><span class="pio3 bialy"></span></div>
+        <div><span class="kr bialy"></span> </div>
+        <div></div>
+        <div></div>
+        <div><span class="pio3 bialy"></span> </div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><span class="kuncz czarny"></span> </div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div><span class="kuncz czarny"></span> </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><span class="krcz czarny"></span> </div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wiersz1">
+        <div><span class="pio czarny"></span> </div>
+        <div><span class="pio11 czarny"></span> </div>
+        <div><span class="pio33 czarny"></span> </div>
+        <div><span class="pio44 czarny"></span> </div>
+        <div><span class="pio55 czarny"></span> </div>
+        <div><span class="pio22 czarny"></span> </div>
+        <div><span class="pio66 czarny"></span> </div>
+        <div><span class="pio77 czarny"></span> </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>
